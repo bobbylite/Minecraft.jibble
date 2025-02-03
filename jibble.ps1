@@ -1,24 +1,26 @@
+# Correct backslash escaping
 $downloadsPath = "$HOME\Downloads"
-$destinationPath = "$HOME\Minecraft.jibble"
+$destinationFolder = "$HOME\AppData\Roaming\.minecraft\jibble"
 $fileName = "cloudflared-windows-amd64.exe"
 $filePath = "$downloadsPath\$fileName"
 
 # Check if the file exists in Downloads
 if (Test-Path $filePath) {
     # Create the destination folder if it doesn't exist
-    if (!(Test-Path $destinationPath)) {
-        New-Item -ItemType Directory -Path $destinationPath | Out-Null
+    if (!(Test-Path $destinationFolder)) {
+        New-Item -ItemType Directory -Path $destinationFolder -Force | Out-Null
     }
     
     # Move the file to the new folder
-    Move-Item -Path $filePath -Destination $destinationPath -Force
-    Write-Output "Moved $fileName to $destinationPath"
+    $destinationFilePath = Join-Path -Path $destinationFolder -ChildPath $fileName
+    Move-Item -Path $filePath -Destination $destinationFilePath -Force
+    Write-Output "Moved $fileName to $destinationFolder"
     
     # Navigate to the new folder
-    Set-Location -Path $destinationPath
+    Set-Location -Path $destinationFolder
     
     # Run the Cloudflared command
-    .\cloudflared-windows-amd64.exe access tcp --hostname mc.9livesgaming.com --url localhost:25565
+    Start-Process -FilePath $destinationFilePath -ArgumentList "access tcp --hostname mc.9livesgaming.com --url localhost:25565" -NoNewWindow
 } else {
     Write-Output "$fileName not found in Downloads folder."
 }
