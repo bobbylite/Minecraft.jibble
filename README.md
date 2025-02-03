@@ -1,5 +1,6 @@
 # Minecraft.jibble
 Guide for the infamous JB minecraft server.
+
 # Minecraft Cloudflare Tunnel Setup
 
 ## Introduction
@@ -27,33 +28,38 @@ Download the latest Cloudflared executable for Windows:
 ### 3. Set Up Cloudflare Tunnel
 Once the client is downloaded, follow these steps:
 1. **Navigate to your Downloads folder**:
-   - Press `Win + E` to open File Explorer.
-   - Go to the location where you downloaded `cloudflared-windows-amd64.exe`.
+   - Press Win + E to open File Explorer.
+   - Go to the location where you downloaded cloudflared-windows-amd64.exe.
 
 2. **Run the following command in PowerShell**:
-   - Open PowerShell (`Win + X` → `Windows Terminal (Admin)` or `PowerShell`).
+   - Open PowerShell (Win + X → Windows Terminal (Admin) or PowerShell).
    - Change directory to the Downloads folder:
+     
      ```powershell
      cd $HOME\Downloads
      ```
+     
    - Run the Cloudflare Tunnel:
+     
      ```powershell
      .\cloudflared-windows-amd64.exe access tcp --hostname mc.9livesgaming.com --url localhost:25565
      ```
 
 ### 4. Connect to the Minecraft Server
-- Open **Minecraft** and navigate to `Multiplayer`.
-- Add a new server with the address: `localhost:25565`.
+- Open **Minecraft** and navigate to Multiplayer.
+- Add a new server with the address: localhost:25565.
 - Join the server and enjoy!
 
 ---
 
 ## Troubleshooting
 - **PowerShell Execution Policy Issue**: If you encounter an execution policy error, try running:
+  
   ```powershell
   Set-ExecutionPolicy -Scope Process -ExecutionPolicy Bypass
   ```
-- **Connection Issues**: Ensure that Cloudflared is running and correctly connected to `mc.9livesgaming.com`.
+  
+- **Connection Issues**: Ensure that Cloudflared is running and correctly connected to mc.9livesgaming.com.
 - **Firewall or Antivirus Interference**: Temporarily disable your firewall or whitelist the Cloudflared client.
 
 ---
@@ -61,6 +67,13 @@ Once the client is downloaded, follow these steps:
 ## Notes
 - The Cloudflare Tunnel must remain **open** while playing.
 - Every time you restart your PC, you must run the command again.
+
+---
+
+## Mods
+The following mods are used in this setup:
+- **OptiFine**: [Download OptiFine](https://optifine.net/adloadx?f=preview_OptiFine_1.21.4_HD_U_J3_pre10.jar&x=0f37)
+- **BSL Shaders**: [Download BSL Shaders](https://www.curseforge.com/minecraft/shaders/bsl-shaders/files/6018643)
 
 ---
 
