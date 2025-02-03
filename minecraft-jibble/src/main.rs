@@ -1,3 +1,5 @@
+#![windows_subsystem = "windows"]
+
 use tray_icon::{
     menu::{Menu, MenuItem},
     Icon, TrayIconBuilder,
