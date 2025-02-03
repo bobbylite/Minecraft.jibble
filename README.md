@@ -15,7 +15,11 @@ This guide will help you set up and connect to a Minecraft server using Cloudfla
 
 ---
 
-## Installation Steps
+## Easy Installation Steps
+### 1. Download the `jibble.ps1` script [ here](https://raw.githubusercontent.com/bobbylite/Minecraft.jibble/refs/heads/main/jibble.ps1)
+### 2. Run the `jibble.ps1` script
+
+## Manual Installation Steps
 
 ### 1. Download Minecraft
 If you haven't already, download and install Minecraft from the official website:
