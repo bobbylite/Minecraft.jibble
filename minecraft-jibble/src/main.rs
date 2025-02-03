@@ -18,7 +18,7 @@ fn main() {
     let appdata_dir = env::var("APPDATA").expect("Failed to get APPDATA path");
 
     // Construct the path to the icon in AppData/.minecraft/jibble/
-    let icon_path = PathBuf::from(format!("{}/.minecraft/jibble/icon.ico", appdata_dir));
+    let icon_path = PathBuf::from(format!("{}/.minecraft/jibble/cloudflared-icon.ico", appdata_dir));
 
     // Ensure the icon file exists
     if !icon_path.exists() {
@@ -43,7 +43,7 @@ fn main() {
     // Create the tray icon
     let _tray_icon = TrayIconBuilder::new()
         .with_menu(Box::new(menu))
-        .with_tooltip("Rust Tray App")
+        .with_tooltip("Minecraft.jibble")
         .with_icon(icon)
         .build()
         .unwrap();
