@@ -81,5 +81,13 @@ The following mods are used in this setup:
 
 ---
 
+## Development
+Run this command in the `PyJibble` directory to build the jibble_client.py executable for windows.
+```bsh
+pyinstaller --noconsole --onefile --icon=PyJibble\icon.ico --add-binary "cloudflared-windows-amd64.exe;." --add-data "PyJibble\icon.ico;." jibble_client.py
+```
+
+---
+
 ### 🚀 Enjoy your Minecraft adventure with Cloudflare security! 🎮
 

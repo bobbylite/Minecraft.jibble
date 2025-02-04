@@ -1,0 +1,61 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual Environment
+venv/
+myenv/
+env/
+
+# PyInstaller build artifacts
+build/
+dist/
+*.spec
+
+# Windows executables & temporary files
+*.exe
+*.dll
+*.bat
+*.cmd
+*.pdb
+Thumbs.db
+.DS_Store
+
+# Logs and temp files
+*.log
+logs/
+debug.log
+nohup.out
+
+# IDE & Editor specific
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# Inno Setup output
+*.iss.su
+Output/
+*.tmp
+
+# Cloudflare executable (if it's not meant to be committed)
+cloudflared-windows-amd64.exe
+
+# Ignore uploaded installation files
+JibbleClientInstaller.exe
+JibbleClientInstaller*.exe
+
+# Ignore user config files
+config.json
+*.ini
+.env
+
+# Ignore pip environment files
+Pipfile
+Pipfile.lock
+requirements.txt
+
