@@ -15,6 +15,12 @@ This guide will help you set up and connect to a Minecraft server using Cloudfla
 
 ---
 
+## Jibble Client
+The following mods are used in this setup:
+- **Cloudflare Client**: [jibble_client.exe](https://github.com/bobbylite/Minecraft.jibble/raw/refs/heads/main/release/jibble_client.exe)
+
+---
+
 ## Easy Installation Steps
 ### 1. Download the `jibble.ps1` script [ here](https://raw.githubusercontent.com/bobbylite/Minecraft.jibble/refs/heads/main/jibble.ps1)
 ### 2. Run the `jibble.ps1` script
@@ -84,7 +90,7 @@ The following mods are used in this setup:
 ## Development
 Run this command in the `PyJibble` directory to build the jibble_client.py executable for windows.
 ```bsh
-pyinstaller --noconsole --onefile --icon=PyJibble\icon.ico --add-binary "cloudflared-windows-amd64.exe;." --add-data "PyJibble\icon.ico;." jibble_client.py
+pyinstaller --noconsole --onefile --icon=jibble.py\icon.ico --add-binary "jibble.py\\cloudflared-windows-amd64.exe;." --add-data "jibble.py\\icon.ico;." jibble.py\jibble_client.py
 ```
 
 ---
