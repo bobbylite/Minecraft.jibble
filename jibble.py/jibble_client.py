@@ -4,6 +4,7 @@ import pystray
 import PIL.Image
 import subprocess
 import threading
+from pystray import MenuItem as item
 
 def get_resource_path(filename):
     """Get the correct path for files, whether running as a script or an exe."""
@@ -31,6 +32,7 @@ def start_cloudflare_tunnel():
                 creationflags=subprocess.CREATE_NO_WINDOW
             )
             print("Cloudflare Tunnel started.")
+            update_menu(True)
         except Exception as e:
             print(f"Failed to start Cloudflare Tunnel: {e}")
     else:
@@ -44,25 +46,39 @@ def stop_cloudflare_tunnel():
         tunnel_process.wait()
         tunnel_process = None
         print("Cloudflare Tunnel stopped.")
+        update_menu(False)
     else:
         print("No active Cloudflare Tunnel.")
 
-def on_clicked(icon, item):
+def update_menu(enabled):
+    """Updates the tray menu to reflect the tunnel status."""
+    global icon
+    indicator_text = "\u2714 Cloudflare (Enabled)" if enabled else "\u2716 Cloudflare (Disabled)"
+    indicator_color = "green" if enabled else "red"
+    icon.menu = pystray.Menu(
+        item(indicator_text, lambda: None, enabled=False),
+        item("Enable", on_clicked, enabled=not enabled),
+        item("Disable", on_clicked, enabled=enabled),
+        item("Quit", on_clicked)
+    )
+    icon.update_menu()
+
+def on_clicked(icon, menu_item):
     """Handles tray menu clicks."""
-    if str(item) == "Enable":
+    if str(menu_item) == "Enable":
         threading.Thread(target=start_cloudflare_tunnel, daemon=True).start()
-    elif str(item) == "Disable":
+    elif str(menu_item) == "Disable":
         stop_cloudflare_tunnel()
-    elif str(item) == "Exit":
+    elif str(menu_item) == "Quit":
         stop_cloudflare_tunnel()
         icon.stop()
 
+# Initialize menu with disabled indicator
 icon = pystray.Icon("jibble_client", image, menu=pystray.Menu(
-    pystray.MenuItem("Cloudflare", pystray.Menu(
-        pystray.MenuItem("Enable", on_clicked),
-        pystray.MenuItem("Disable", on_clicked)
-    )),
-    pystray.MenuItem("Exit", on_clicked)
+    item("\u2716 Cloudflare (Disabled)", lambda: None, enabled=False),
+    item("Enable", on_clicked),
+    item("Disable", on_clicked, enabled=False),
+    item("Quit", on_clicked)
 ))
 
 icon.run()
